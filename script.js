@@ -137,13 +137,16 @@ var guessResult = false;
 
 $(document).ready(function () {
 
+    //Sets arrows to display none
     $('#arrow-up, #arrow-down').hide();
 
+    // Click handler for the guess button
     $('#submitAnswer').click(function () {
         game.makeGuess();
         $('#guess_input').val('');
     });
 
+    // Click handler for the reset game button
     $('#reset').click(function(){
         game.resetGame();
     });

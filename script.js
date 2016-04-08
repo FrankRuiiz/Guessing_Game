@@ -122,6 +122,13 @@ guessingGame.prototype = {
         else {
             $('#response_div').text("Please enter a number between o and 100!").fadeToggle("slow").delay(1000).fadeToggle("slow");
         }
+    },
+
+    //Resets the game
+    resetGame: function() {
+        this.secretNumber = null;
+        this.init();
+        $('#response_div').text("Number Reset!").fadeToggle("slow").delay(1000).fadeToggle("slow");
     }
 };
 
@@ -135,6 +142,10 @@ $(document).ready(function () {
     $('#submitAnswer').click(function () {
         game.makeGuess();
         $('#guess_input').val('');
+    });
+
+    $('#reset').click(function(){
+        game.resetGame();
     });
 });
 

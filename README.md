@@ -7,10 +7,10 @@ The purpose of this project was to introduce basic JavaScript concepts and logic
 
 **Features Implemented**
 
-*Object Oriented Programming
-*CSS3 & jQuery Animations (transitions)
-*Responsive Design (Bootstrap)
+* Object Oriented Programming
+* CSS3 & jQuery Animations (transitions)
+* Responsive Design (Bootstrap)
 
-![alt text](img/zeroto100.png "Welcome/Home page specifications")
+![alt text](img/zero_to_100.png "Guessing Game Screen Shot 1")
 
-![alt text](img/zeroto100-2.png "Welcome/Home page specifications")
+![alt text](img/zero_to_100_2.png "Guessing Game Screen Shot 2")

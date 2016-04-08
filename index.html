@@ -9,22 +9,27 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" type="text/javascript"></script>
 </head>
-<!--The body onload handler calls a function (pick_number) and assigns its value to the_number. This is the game number -->
-<!--or the number to be guessed for the game-->
-<body>
-<div class="background container-fluid">
 
+<body>
+
+<!--Container-->
+<div class="background container-fluid">
+    <!--Title-->
     <div class="row" id="title">
         <div class="col-xs-12 text-center">
             <h1>Zero<span>to</span><span>100!</span></h1>
         </div>
     </div>
 
+    <!--Game Area-->
     <div class="row text-center" id="game-area">
+
+        <!--Arrow up img-->
         <div class="col-xs-4">
             <img class="img-responsive" id="arrow-up" src="arrowUp.png" alt="An image of an arrow pointing up.">
         </div>
 
+        <!--Game panel-->
         <div id="game-panel" class="col-xs-4 ">
             <!--Text input for user guess-->
             <label for="guess_input">Take a guess:</label><br>
@@ -35,9 +40,11 @@
             <h1 id="response_div"></h1>
         </div>
 
+        <!--Arrow down img-->
         <div class="col-xs-4">
             <img id="arrow-down" class="img-responsive" src="arrowDown.png" alt="An image of an arrow pointing down.">
         </div>
+
     </div>
 </div>
 </body>

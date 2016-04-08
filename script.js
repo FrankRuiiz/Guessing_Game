@@ -2,45 +2,51 @@
  * Created by FrankyR on 3/2/2016.
  */
 
+// guessingGame constructor function
 guessingGame = function () {
     this.init();
 };
 
+// guessingGame prototype where properties and methods are declared
 guessingGame.prototype = {
     minNumber: 1,
     maxNumber: 100,
     secretNumber: null,
     message: null,
-    totalGuesses: 0,
+    totalGuesses: 0, //TODO: Add feature to keep track of the amount guesses user has taken
 
     init: function () {
         this.generateNumber();
     },
 
+    // generates the secretNumber
     generateNumber: function () {
         this.secretNumber = Math.floor(this.minNumber + (Math.random() * this.maxNumber));
     },
 
+    // Animation method for the up arrow
     arrowUpAnimation: function (arrowElem) {
         var arrowAnimation = setInterval(function () {
-            arrowElem.fadeIn().animate({top: '-=80px'}, 250).animate({top: '+=80px'}, 250);
-        }, 500);
+            arrowElem.fadeIn("fast").animate({top: '-=80px'}, 250).animate({top: '+=80px'}, 250);
+        }, 100);
         setTimeout(function () {
             clearInterval(arrowAnimation);
             arrowElem.fadeOut();
-        }, 1000);
+        }, 300);
     },
 
+    // Animation method for the down arrow
     arrowDwnAnimation: function(arrowElem) {
         var arrowAnimation = setInterval(function () {
-            arrowElem.fadeIn().animate({top: '+=80px'}, 250).animate({top: '-=80px'}, 250);
-        }, 500);
+            arrowElem.fadeIn("fast").animate({top: '+=80px'}, 250).animate({top: '-=80px'}, 250);
+        }, 100);
         setTimeout(function () {
             clearInterval(arrowAnimation);
             arrowElem.fadeOut();
-        }, 1000);
+        }, 300);
     },
 
+    // Animation method for changing the background color based on user guess
     hotOrColdBgAnimation: function (theGuess, bg) {
         var absoluteDiff = Math.abs(this.secretNumber - theGuess);
         if (this.secretNumber === theGuess) {
@@ -79,10 +85,9 @@ guessingGame.prototype = {
                 bg.removeClass('background-ice-cold', 500, 'ease');
             }, 1000);
         }
-        else {
-            alert("Must be a number between 1 and 100!")
-        }
     },
+
+    // Check win condition, controls which animation will be triggered
     checkWin: function (theGuess) {
         var $background = $('.background');
         if (theGuess < this.secretNumber) {
@@ -105,15 +110,17 @@ guessingGame.prototype = {
             return true;
         }
     },
+
+    // Grabs user guess from input and checks if the guess is a number
     makeGuess: function () {
         var guessString = $('#guess_input').val();
-        if (guessString && !isNaN(guessString)) {
+        if (guessString && !isNaN(guessString) && guessString <= 100) {
             var guessInteger = parseInt(guessString);
             guessResult = game.checkWin(guessInteger);
-            $('#response_div').text(game.message);
+            $('#response_div').text(game.message).slideToggle("slow", "swing").delay(1000).fadeToggle("slow");
         }
         else {
-            $('#response_div').text("Please enter a number between o and 100!");
+            $('#response_div').text("Please enter a number between o and 100!").fadeToggle("slow").delay(1000).fadeToggle("slow");
         }
     }
 };

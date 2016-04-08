@@ -2,8 +2,8 @@
  * Created by FrankyR on 3/2/2016.
  */
 
-guessingGame = function (min, max) {
-    this.init(min, max);
+guessingGame = function () {
+    this.init();
 };
 
 guessingGame.prototype = {
@@ -20,15 +20,27 @@ guessingGame.prototype = {
     generateNumber: function () {
         this.secretNumber = Math.floor(this.minNumber + (Math.random() * this.maxNumber));
     },
-    arrowAnimation: function (arrowElem) {
+
+    arrowUpAnimation: function (arrowElem) {
         var arrowAnimation = setInterval(function () {
-            arrowElem.animate({top: '-=80px'}, 300);
-            arrowElem.animate({top: '+=80px'}, 300);
-        }, 600);
+            arrowElem.fadeIn().animate({top: '-=80px'}, 250).animate({top: '+=80px'}, 250);
+        }, 500);
         setTimeout(function () {
             clearInterval(arrowAnimation);
-        }, 1500);
+            arrowElem.fadeOut();
+        }, 1000);
     },
+
+    arrowDwnAnimation: function(arrowElem) {
+        var arrowAnimation = setInterval(function () {
+            arrowElem.fadeIn().animate({top: '+=80px'}, 250).animate({top: '-=80px'}, 250);
+        }, 500);
+        setTimeout(function () {
+            clearInterval(arrowAnimation);
+            arrowElem.fadeOut();
+        }, 1000);
+    },
+
     hotOrColdBgAnimation: function (theGuess, bg) {
         var absoluteDiff = Math.abs(this.secretNumber - theGuess);
         if (this.secretNumber === theGuess) {
@@ -76,14 +88,14 @@ guessingGame.prototype = {
         if (theGuess < this.secretNumber) {
             this.hotOrColdBgAnimation(theGuess, $background);
             var $arrowUp = $('#arrow-up');
-            this.arrowAnimation($arrowUp);
+            this.arrowUpAnimation($arrowUp);
             this.message = theGuess + " is too low, try again!";
             return false;
         }
         else if (theGuess > this.secretNumber) {
             this.hotOrColdBgAnimation(theGuess, $background);
             var $arrowDown = $('#arrow-down');
-            this.arrowAnimation($arrowDown);
+            this.arrowDwnAnimation($arrowDown);
             this.message = theGuess + " is too high, try again!";
             return false;
         }
@@ -101,7 +113,7 @@ guessingGame.prototype = {
             $('#response_div').text(game.message);
         }
         else {
-            $('#response_div').text("Please enter a number between 1 and 100!");
+            $('#response_div').text("Please enter a number between o and 100!");
         }
     }
 };
@@ -110,6 +122,9 @@ var game = new guessingGame;
 var guessResult = false;
 
 $(document).ready(function () {
+
+    $('#arrow-up, #arrow-down').hide();
+
     $('#submitAnswer').click(function () {
         game.makeGuess();
         $('#guess_input').val('');

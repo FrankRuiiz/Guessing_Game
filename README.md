@@ -11,6 +11,6 @@ The purpose of this project was to introduce basic JavaScript concepts and logic
 * CSS3 & jQuery Animations (transitions)
 * Responsive Design (Bootstrap)
 
-![alt text](img/zero_to_100.png "Guessing Game Screen Shot 1")
+![alt text](img/zero_to_100.PNG "Guessing Game Screen Shot 1")
 
-![alt text](img/zero_to_100_2.png "Guessing Game Screen Shot 2")
+![alt text](img/zero_to_100_2.PNG "Guessing Game Screen Shot 2")
